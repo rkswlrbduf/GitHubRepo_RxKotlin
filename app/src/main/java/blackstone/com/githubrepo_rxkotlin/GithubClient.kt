@@ -9,7 +9,7 @@ private const val BASE_URL = "http://api.github.com"
 
 class GithubClient {
 
-    open fun getApi() : GithubApi = Retrofit.Builder()
+    fun getApi() : GithubApi = Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(OkHttpClient())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

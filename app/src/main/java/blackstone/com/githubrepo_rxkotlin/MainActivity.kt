@@ -21,8 +21,7 @@ class MainActivity : AppCompatActivity() {
         mRecyclerView.layoutManager = LinearLayoutManager(this)
         mRecyclerView.adapter = recyclerViewAdapter
 
-        val github = GithubClient()
-        val disposable = github.getApi().getRepos(intent.extras.get("owner").toString())
+        val disposable = GithubClient().getApi().getRepos(intent.extras.get("owner").toString())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { items -> recyclerViewAdapter.update(items) }
